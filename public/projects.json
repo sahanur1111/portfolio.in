@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "title": "E-commerce",
+      "category": "Applications",
+      "image": "images/project-1.jpg",
+      "link":"https://ecommerce-marble-store-app-user.vercel.app/",
+      "github":"https://github.com/sahanur1111/Hazimarble-store-online-order-user"
+    },
+    {
+      "id": 2,
+      "title": "Calculator",
+      "category": "Frontend website",
+      "image": "images/project-2.webp",
+      "link":"https://sahanur1111.github.io/calculator-1/",
+      "github":"https://github.com/sahanur1111/calculator-1"
+    },
+    {
+      "id": 3,
+      "title": "Flight Booking",
+      "category": "Frontend website",
+      "image": "images/project-3.webp",
+      "link":"https://tickitbooking-github-io.vercel.app/",
+      "github":"https://github.com/sahanur1111/Tickitbooking.github.io"
+    }
+  ]
+  
