@@ -1,4 +1,52 @@
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
+import  Swal  from "sweetalert2";
 const Contact = () => {
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // EmailJS service ID and template ID, and public key
+    const serviceId = "service_vppuwsj";
+    const templateId = "template_28q8ika";
+    const publickKey = "Zc0VG_KSAvY09cXsb";
+
+    // Create a new object that dynamic temple params
+
+    const templateParams = {
+      from_name: name,
+      form_email: email,
+      to_name: "Sahanur",
+      message: message,
+    };
+
+    // send the email using EmailJS
+    emailjs
+      .send(serviceId, templateId, templateParams, publickKey)
+      .then((response) => {
+        console.log("Email sent successfully", response);
+        if(response){
+        Swal.fire({
+          position: "top-right",
+          icon: "success",
+          title: `Hey ${name}, Your Message has been sent`,
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+        setName("");
+        setEmail("");
+        setMessage("");
+      })
+      .catch((err) => {
+        console.log("Error sending email:", err);
+      });
+  };
+ 
+
   return (
     <section className="contact" data-page="contact">
       <header>
@@ -20,33 +68,34 @@ const Contact = () => {
       <section className="contact-form">
         <h3 className="h3 form-title">Contact Form</h3>
 
-        <form action="#" className="form" data-form>
+        <form action="#" onSubmit={handleSubmit} className="form" data-form>
           <div className="input-wrapper">
             <input
               type="text"
-              name="fullname"
               className="form-input"
-              placeholder="Full name"
+              placeholder="Your Name"
+              value={name}
               required
-              data-form-input
+              onChange={(e) => setName(e.target.value)}
+              
             />
 
             <input
               type="email"
-              name="email"
               className="form-input"
-              placeholder="Email address"
+              placeholder="Your Email"
               required
-              data-form-input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
           <textarea
-            name="message"
             className="form-input"
             placeholder="Your Message"
             required
-            data-form-input
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
           ></textarea>
 
           <button className="form-btn" type="submit" data-form-btn>
